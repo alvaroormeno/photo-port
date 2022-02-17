@@ -33,15 +33,13 @@ function Nav() {
                 Contact
               </span>
             </li>
-            {
-              categories.map((category) => (
+            {categories.map((category) => (
                 <li className="mx-1" key={category.name} >
                   <span onClick={() => { handleClick(); }}>
                    {capitalizeFirstLetter(category.name)}
                   </span>
                 </li>
-              ))
-            }
+            ))}
           </ul>
         </nav>
       </header>
