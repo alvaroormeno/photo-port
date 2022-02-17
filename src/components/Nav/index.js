@@ -1,18 +1,20 @@
-import React from "react";
+//import React from "react";
 import { capitalizeFirstLetter } from "../../utils/helpers";
+import React, { useEffect } from 'react';
 
 
-function Nav() {
-    const  categories = [
-      { name: 'commercial', description: 'Photos of grocery stores, food trucks, and other commercial projects' },
-      { name: 'portraits', description: 'Portraits of people in my life' },
-      { name: 'food', description: 'Delicious delicacies' },
-      { name: 'landscape', description: 'Fields, farmhouses, waterfalls, and the beauty of nature' }
-    ];
+function Nav(props) {
+
+    useEffect(() => {
+        document.title = capitalizeFirstLetter(currentCategory.name);
+    }, [currentCategory]);
+
+    const { categories = [], setCurrentCategory, currentCategory } = props;
+
   
-    const handleClick = () => {
-      console.log("click handled")
-    }
+    // const handleClick = () => {
+    //   console.log("click handled")
+    // }
   
     return (
       <header data-testid="header" className="flex-row px-1">
@@ -24,18 +26,18 @@ function Nav() {
         <nav>
           <ul className="flex-row">
             <li className="mx-2">
-              <a data-testid="about" href="#about" onClick={() => handleClick()}>
+              <a data-testid="about" href="#about">
                 About me
               </a>
             </li>
             <li className={"mx-2"}>
-              <span onClick={() => handleClick()}>
+              <span>
                 Contact
               </span>
             </li>
             {categories.map((category) => (
-                <li className="mx-1" key={category.name} >
-                  <span onClick={() => { handleClick(); }}>
+                <li className={`mx-1 ${currentCategory.name === category.name && 'navActive'}`} key={category.name} >
+                  <span onClick={() => { setCurrentCategory(category) }}>
                    {capitalizeFirstLetter(category.name)}
                   </span>
                 </li>
