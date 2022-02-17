@@ -2,8 +2,9 @@ import React from 'react';
 import About from './components/About/index.js';
 import Nav from "./components/Nav/index.js";
 import Gallery from "./components/Gallery/index.js";
-import ContactForm from './utils/Contact/index.js';
+import ContactForm from './components/Contact/index.js';
 import { useState } from 'react/cjs/react.development';
+
 
 
 function App() {
@@ -16,14 +17,17 @@ function App() {
 
   const [currentCategory, setCurrentCategory] = useState(categories[0]);
 
+  const [contactSelected, setContactSelected] = useState(false);
+
+
   return (
     <div>
-      <Nav categories={categories} setCurrentCategory={setCurrentCategory} currentCategory={currentCategory}></Nav>
+      <Nav categories={categories} setCurrentCategory={setCurrentCategory} currentCategory={currentCategory} contactSelected={contactSelected} setContactSelected={setContactSelected}></Nav>
       <main>
         <div>
-          <ContactForm></ContactForm>
-          <Gallery currentCategory={currentCategory}></Gallery>
-          <About></About>
+          {!contactSelected ? (<> <Gallery currentCategory={currentCategory}></Gallery>
+          <About></About> </>) : (
+          <ContactForm></ContactForm> )}
         </div>
       </main>
 
