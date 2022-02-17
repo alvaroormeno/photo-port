@@ -2,6 +2,7 @@ import React from 'react';
 import About from './components/About/index.js';
 import Nav from "./components/Nav/index.js";
 import Gallery from "./components/Gallery/index.js";
+import ContactForm from './utils/Contact/index.js';
 import { useState } from 'react/cjs/react.development';
 
 
@@ -20,6 +21,7 @@ function App() {
       <Nav categories={categories} setCurrentCategory={setCurrentCategory} currentCategory={currentCategory}></Nav>
       <main>
         <div>
+          <ContactForm></ContactForm>
           <Gallery currentCategory={currentCategory}></Gallery>
           <About></About>
         </div>
