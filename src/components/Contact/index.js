@@ -51,7 +51,7 @@ function ContactForm() {
     return(
 
         <section>
-        <h1>Contact me</h1>
+        <h1 data-testid="ctTag">Contact me</h1>
         <form id="contact-form" onSubmit={handleSubmit}>
             {/* // name input */}
             <div>
